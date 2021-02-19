@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+
+
+{% block main %}
+    <table>
+    <thead>
+    	<tr>
+    		<th>Symbol</th>
+    		<th>Name</th>
+    		<th>Shares</th>
+    		<th>Price</th>
+    		<th>Total</th>
+    	</tr>
+    </thead>
+    <tbody>
+        {% for row in user_shares %}
+            <tr>
+                <td>
+                    {{ row["symbol"] }}
+                </td>
+                <td>
+                    {{ row["name"] }}
+                </td>
+                <td>
+                    {{ row["SUM(amount)"] }}
+                </td>
+                <td>
+                    {{ row["price_USD"] }}
+                </td>
+                <td>
+                    {{ row["total_USD"] }}
+                </td>
+            </tr>
+       {% endfor %}
+       <tr>
+            <td>
+               CASH
+            </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                {{ user_current_cash }}
+            </td>
+       </tr>
+       <tr>
+            <td></td>
+
+            <td></td>
+
+            <td></td>
+
+            <td></td>
+
+            <td>
+                <strong>{{ user_total_cash }}</strong>
+            </td>
+       </tr>
+    </tbody>
+    </table>
+{% endblock %}
